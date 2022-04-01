@@ -1,5 +1,5 @@
 ## simple-cli-wallet
-### install nodejs & typescipt
+### install nodejs & typescript
 ```
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
