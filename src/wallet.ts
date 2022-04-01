@@ -15,7 +15,7 @@ const faucetClient = new FaucetClient(restClient);
 
 const createAccount = async () => {
     const newAccount = new Account();
-    newAccount.saveAccount(`./accounts/${accountName}.key`);
+    newAccount.saveAccount(`./.accounts/${accountName}.key`);
     console.log("\nCreating keypairs...");
     await faucetClient.fundAccount(newAccount.pubKey(), 0);
     console.log(`\nAddress: ${newAccount.address()}`);
@@ -23,21 +23,21 @@ const createAccount = async () => {
 }; 
 
 const selectAccount = async () => {
-    const existingAccount = new Account(`./accounts/${accountName}.key`);
+    const existingAccount = new Account(`./.accounts/${accountName}.key`);
     console.log("\nLoading keypairs...");
     console.log(`\nAddress: ${existingAccount.address()}`);
     console.log(`Balance: ${await restClient.accountBalance(existingAccount.address())} ${coinName}`);
 };
 
 const checkBalance = async () => {
-    const existingAccount = new Account(`./accounts/${accountName}.key`);
+    const existingAccount = new Account(`./.accounts/${accountName}.key`);
     console.log(`\nBalance: ${await restClient.accountBalance(existingAccount.address())} ${coinName}`);
 };
 
 const receiveTestCoins = async () => {
     console.log("");
     const amountOfCoins = parseInt(prompter("Enter amount of coins: "));
-    const existingAccount = new Account(`./accounts/${accountName}.key`);
+    const existingAccount = new Account(`./.accounts/${accountName}.key`);
     await faucetClient.fundAccount(existingAccount.pubKey(), amountOfCoins);
     console.log(`\nAddress: ${existingAccount.address()}`);
     console.log(`Balance: ${await restClient.accountBalance(existingAccount.address())} ${coinName}`);
@@ -47,7 +47,7 @@ const sendTestCoins = async () => {
     console.log("");
     const recipientAddress: string = prompter("Enter recipient address: ");
     const amountOfCoins = parseInt(prompter("Enter amount of coins: "));
-    const existingAccount = new Account(`./accounts/${accountName}.key`);
+    const existingAccount = new Account(`./.accounts/${accountName}.key`);
     const txHash = await restClient.transfer(existingAccount, recipientAddress, amountOfCoins);
     await restClient.waitForTransaction(txHash);  
     console.log(`\nSent ${amountOfCoins} ${coinName} to ${recipientAddress}`);
@@ -55,7 +55,7 @@ const sendTestCoins = async () => {
 
 const accountOptions = async () => {
     console.log("");
-    const existingAccount = new Account(`./accounts/${accountName}.key`);
+    const existingAccount = new Account(`./.accounts/${accountName}.key`);
     var accountOption = parseInt(prompter(`${accountName}@${networkName}> `));
     if (accountOption == 1) {
         await checkBalance();
