@@ -10,7 +10,7 @@ const faucetClient = new FaucetClient(restClient);
 
 const createAccount = async () => {
     const newAccount = new Account();
-    newAccount.saveAccount(`./accounts/${accountName}.key`);
+    newAccount.saveAccount(`./.accounts/${accountName}.key`);
     console.log("\nCreating keypairs...");
     await faucetClient.fundAccount(newAccount.pubKey(), 0);
     console.log("\n[OK]");
