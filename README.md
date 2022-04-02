@@ -12,6 +12,7 @@ sudo npm install -g ts-node
 git clone https://github.com/xorgal/simple-cli-wallet.git
 cd ~/simple-cli-wallet
 npm install
+cd src
 ```
 
 ### create and save new keypair
