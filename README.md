@@ -17,5 +17,8 @@ npm install
 ### create and save new keypair
 `$ ts-node newkey`
 
+### import existing account from seed phrase
+`$ ts-node import`
+
 ### launch wallet
 `$ ts-node wallet`
