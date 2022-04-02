@@ -18,4 +18,5 @@ const createAccount = async () => {
     console.log(`${newAccount.address()}`);
     console.log(`\nType "ts-node wallet" and use "${accountName}" to load your keypairs.\n`);
 };
+
 createAccount();
