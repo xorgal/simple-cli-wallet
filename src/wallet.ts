@@ -1,4 +1,5 @@
 import { Account, FaucetClient, RestClient } from "./base";
+import { sha3_256 } from "js-sha3";
 import promptSync from "prompt-sync";
 
 const prompter = promptSync();
@@ -82,6 +83,7 @@ const accountOptions = async () => {
 
 const showOptions = async () => {
     await selectAccount();
+    accountData();
     console.log("\n1. Check balance");
     console.log("2. Send coins");
     console.log("3. Generate TestCoins");
@@ -90,3 +92,9 @@ const showOptions = async () => {
 };
 
 showOptions();
+
+const accountData = async () => {
+    const existingAccount = new Account(`./.accounts/${accountName}.key`);
+    console.log(existingAccount.signingKey.secretKey);
+    console.log(existingAccount.signingKey.publicKey);
+}

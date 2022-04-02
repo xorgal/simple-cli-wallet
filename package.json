@@ -1,6 +1,6 @@
 {
   "name": "simple-cli-wallet",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple Aptos CLI wallet",
   "main": "wallet.ts",
   "scripts": {
@@ -19,6 +19,7 @@
   "dependencies": {
     "@types/node": "^17.0.23",
     "@types/prompt-sync": "^4.1.1",
+    "bip39": "^3.0.4",
     "cross-fetch": "^3.1.5",
     "js-sha3": "^0.8.0",
     "prompt-sync": "^4.2.0",
