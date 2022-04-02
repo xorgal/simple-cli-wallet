@@ -21,5 +21,8 @@ cd src
 ### import existing account from seed phrase
 `$ ts-node import`
 
+### import existing account from seed phrase
+`$ ts-node import`
+
 ### launch wallet
 `$ ts-node wallet`
