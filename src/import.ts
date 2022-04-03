@@ -1,7 +1,7 @@
 import { Account, FaucetClient, RestClient } from "./base";
 import promptSync from "prompt-sync";
-import { sign, SignKeyPair } from "tweetnacl";
 import { writeFileSync } from "fs";
+import { sign, SignKeyPair } from "tweetnacl";
 import { mnemonicToSeed } from "bip39";
 
 const prompter = promptSync();
@@ -17,7 +17,7 @@ const keypairFromSeedPhrase = async (seedPhrase: string): Promise<SignKeyPair> =
     const buffer = await mnemonicToSeed(accountSeed);
     let seed = new Uint8Array(buffer.toJSON().data.slice(0, 32));
     return sign.keyPair.fromSeed(seed);
-};
+}
 
 const broadcastAccount = async () => {
     const importAccount = new Account(`./.accounts/${accountName}.key`);
@@ -26,9 +26,9 @@ const broadcastAccount = async () => {
     console.log("\n[OK]");
     console.log(`\nAddress: ${importAccount.address()}`);
     console.log(`\nType "ts-node wallet" and use "${accountName}" to load your keypairs.\n`);
-};
+}
 
 keypairFromSeedPhrase(accountSeed).then((newKeyPair) => {
     writeFileSync(`./.accounts/${accountName}.key`, newKeyPair.secretKey.toString());
     broadcastAccount();
-});
+})
