@@ -1,5 +1,4 @@
 import { Account, FaucetClient, RestClient } from "./base";
-import { sha3_256 } from "js-sha3";
 import promptSync from "prompt-sync";
 
 const prompter = promptSync();
@@ -21,19 +20,19 @@ const createAccount = async () => {
     await faucetClient.fundAccount(newAccount.pubKey(), 0);
     console.log(`\nAddress: ${newAccount.address()}`);
     console.log(`Balance: ${await restClient.accountBalance(newAccount.address())} ${coinName}`);
-}; 
+}
 
 const selectAccount = async () => {
     const existingAccount = new Account(`./.accounts/${accountName}.key`);
     console.log("\nLoading keypairs...");
     console.log(`\nAddress: ${existingAccount.address()}`);
     console.log(`Balance: ${await restClient.accountBalance(existingAccount.address())} ${coinName}`);
-};
+}
 
 const checkBalance = async () => {
     const existingAccount = new Account(`./.accounts/${accountName}.key`);
     console.log(`\nBalance: ${await restClient.accountBalance(existingAccount.address())} ${coinName}`);
-};
+}
 
 const receiveTestCoins = async () => {
     console.log("");
@@ -42,7 +41,7 @@ const receiveTestCoins = async () => {
     await faucetClient.fundAccount(existingAccount.pubKey(), amountOfCoins);
     console.log(`\nAddress: ${existingAccount.address()}`);
     console.log(`Balance: ${await restClient.accountBalance(existingAccount.address())} ${coinName}`);
-};
+}
 
 const sendTestCoins = async () => {
     console.log("");
@@ -52,7 +51,7 @@ const sendTestCoins = async () => {
     const txHash = await restClient.transfer(existingAccount, recipientAddress, amountOfCoins);
     await restClient.waitForTransaction(txHash);  
     console.log(`\nSent ${amountOfCoins} ${coinName} to ${recipientAddress}`);
-};
+}
 
 const accountOptions = async () => {
     console.log("");
@@ -79,7 +78,7 @@ const accountOptions = async () => {
     console.log("4. Exit App");
     }
     accountOptions();
-};
+}
 
 const showOptions = async () => {
     await selectAccount();
@@ -88,6 +87,6 @@ const showOptions = async () => {
     console.log("3. Generate TestCoins");
     console.log("4. Exit App");
     accountOptions();
-};
+}
 
 showOptions();
