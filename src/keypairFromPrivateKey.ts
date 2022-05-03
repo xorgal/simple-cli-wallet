@@ -10,7 +10,7 @@ console.log("");
 const pk: string = prompter("Enter private key: ");
 const accountName: string = prompter("Enter account name: ");
 
-const keypairFromPublicKey = () => {
+const keypairFromPrivateKey = () => {
   let data = Uint8Array.from(Buffer.from(pk, "hex"));
   let keypair = sign.keyPair.fromSeed(data);
   let hash = sha3_256.create();
@@ -26,4 +26,4 @@ const keypairFromPublicKey = () => {
   );
 };
 
-keypairFromPublicKey();
+keypairFromPrivateKey();
