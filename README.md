@@ -23,9 +23,13 @@ cd src
 
 `$ ts-node import`
 
-### generate keypair & address from seed phrase
+### keypair & address from seed phrase
 
-`$ ts-node keypair`
+`$ ts-node keypairFromSeedPhrase`
+
+### public key & address from private key
+
+`$ ts-node keypairFromPrivateKey`
 
 ### launch wallet
 
