@@ -19,7 +19,7 @@ const keypairFromPrivateKey = () => {
   let private_key = Buffer.from(keypair.secretKey).toString("hex").slice(0, 64);
   let public_key = Buffer.from(keypair.publicKey).toString("hex");
   let address = hash.hex();
-  console.log("\nKeypair sucessfully created.\n");
+  console.log("\nKeypair successfully created.\n");
   writeFileSync(
     `./.accounts/${accountName}_keypair.key`,
     `private_key: 0x${private_key}\npublic_key: 0x${public_key}\naddress: 0x${address}`
